@@ -54,3 +54,12 @@ strong {
   font-size: 16px;
   top: -32px;
 }
+
+.active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+  text-decoration: none;
+}
+.active:hover {
+  text-decoration: none;
+}
