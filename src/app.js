@@ -103,3 +103,21 @@ let form =document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
 search("Lisbon");
+
+
+function searchLocation(position) {
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+    let apiKey = "bfe7323691410d91197078ee3f9cb9d8";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+
+    axios.get(`${apiUrl}&appid=${apiKey}`).then(displayTemperature);
+}
+
+function getCurrentLocation(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(searchLocation);
+}
+
+let currentLocationButton = document.querySelector(`#current-location-button`);
+currentLocationButton.addEventListener("click", getCurrentLocation);
